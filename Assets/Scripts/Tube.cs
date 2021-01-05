@@ -4,7 +4,7 @@ using UnityEngine;
 public class Tube : MonoBehaviour
 {
     public GameObject sectorPF;
-    public int sectorsCount = 10;
+    public int sectorsCount = 15;
     private float totalHeight;
     private List<GameObject> sectors;
 
