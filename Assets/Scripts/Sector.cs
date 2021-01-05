@@ -2,20 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SectorManager : MonoBehaviour
+public class Sector : MonoBehaviour
 {
     public GameObject platformPF;
     public int elementsCount = 10;
-    public int minimumElements = 4;
-
+    public int minimumElements = 3;
+    public float descentSpeed = 1.0f;
     public static float height = 4.0f;
     public static float radius = 13.0f;
     
-    private int actualElements = 0;
-    
+    private List<GameObject> elements;
+
+    public Sector()
+    {
+        this.elements = new List<GameObject>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        Setup();
+    }
+
+    public void Setup()
+    {
+        foreach (GameObject elemen in elements) {
+            Destroy(elemen);
+        }
+        
         bool[] spawn = new bool[elementsCount];
 
         for (int i = 0; i < elementsCount; i++) {
@@ -34,17 +48,17 @@ public class SectorManager : MonoBehaviour
                 Vector3 pos = transform.position + new Vector3(x, 0, z);
                 float angleDegrees = -angle*Mathf.Rad2Deg;
                 Quaternion rot = Quaternion.Euler(-90, angleDegrees + 90, 0);
-                Instantiate(platformPF, pos, rot);
-
-                actualElements++;
+                GameObject element = Instantiate(platformPF, pos, rot);
+                element.transform.parent = this.transform;
+                elements.Add(element);
             }
         }
     }
-
+    
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector3.down * (descentSpeed * Time.deltaTime), Space.World);
     }
     
     void shuffle<T>(T[] array)

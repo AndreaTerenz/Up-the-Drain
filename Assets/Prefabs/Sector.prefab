@@ -111,4 +111,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformPF: {fileID: 3001319395789502813, guid: 420d521ba1b6cdc69af66d79c290bde3, type: 3}
   elementsCount: 10
-  minimumElements: 4
+  minimumElements: 3
+  descentSpeed: 1
