@@ -4,28 +4,17 @@ using UnityEngine;
 
 public class TubeManager : MonoBehaviour
 {
-    public GameObject platformPF;
-    private float radius = 9.0f;
-    private int sectors = -1;
-    private float sectorHeight = 4.0f;
-    private float tubeHeight = 50.0f;
+    public GameObject sectorPF;
+    public int sectorsCount = 10;
     
     // Start is called before the first frame update
     void Start()
     {
-        sectors = (int) (tubeHeight / sectorHeight);
-        
-        for (int i = 0; i < sectors; i++)
+        for (int i = 0; i < sectorsCount; i++)
         {
-            float angle = i * Mathf.PI * 2 / sectors;
-            float r = radius + Random.Range(-4.0f, .5f);
-            
-            float x = Mathf.Cos(angle) * r;
-            float z = Mathf.Sin(angle) * r;
-            Vector3 pos = new Vector3(x, sectorHeight*i - sectorHeight*2/3, z);
-            float angleDegrees = -angle*Mathf.Rad2Deg;
-            Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
-            Instantiate(platformPF, pos, rot);
+            Vector3 sectorDelta = new Vector3(0, i * SectorManager.height + SectorManager.height/2, 0);
+            Quaternion sectorRot = Quaternion.Euler(-90, 0, 0);
+            Instantiate(sectorPF, transform.position + sectorDelta, sectorRot);
         }
     }
 
