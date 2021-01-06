@@ -8,7 +8,7 @@ public class Sector : MonoBehaviour
     public int elementsCount = 10;
     public int minimumElements = 3;
     public float descentSpeed = 1.0f;
-    public static float height = 4.0f;
+    public static float height = 6.0f;
     public static float radius = 13.0f;
     
     private List<GameObject> elements;

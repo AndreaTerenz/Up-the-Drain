@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyUp(KeyCode.Escape)) {
+            Application.Quit();
+        }
+        
         Vector3 pl = player.position;
         fogPlane.position = new Vector3(0, fogDist, 0);
         lightTr.position = new Vector3(0, lightDist, 0);
