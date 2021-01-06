@@ -7,7 +7,7 @@ public class Sector : MonoBehaviour
     public GameObject platformPF;
     public int elementsCount = 10;
     public int minimumElements = 3;
-    public float descentSpeed = 1.0f;
+    public static float descentSpeed = 1.0f;
     public static float height = 6.0f;
     public static float radius = 13.0f;
     
