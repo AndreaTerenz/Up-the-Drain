@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sector : MonoBehaviour
+public class Level : MonoBehaviour
 {
     public GameObject platformPF;
     public int elementsCount = 10;
@@ -13,7 +13,7 @@ public class Sector : MonoBehaviour
     
     private List<GameObject> elements;
 
-    public Sector()
+    public Level()
     {
         this.elements = new List<GameObject>();
     }
