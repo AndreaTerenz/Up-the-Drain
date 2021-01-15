@@ -42,4 +42,12 @@ public class Tube : MonoBehaviour
             levels.Add(lev);
         }
     }
+
+    public void ResetLevels()
+    {
+        foreach (var lv  in levels)
+        {
+            lv.GetComponent<Level>().ResetHeight();
+        }
+    }
 }

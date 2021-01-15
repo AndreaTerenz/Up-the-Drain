@@ -8,14 +8,18 @@ public class GameManager : MonoBehaviour
 {
     public Transform lightTr;
     public Transform player;
-    public GameObject startPlatform;
+    public Transform startPlatform;
+    public Tube tube;
     
+    private float startY;
+        
     private float lightDist;
     
     // Start is called before the first frame update
     void Start()
     {
         lightDist = Math.Abs(player.position.y - lightTr.position.y);
+        startY = startPlatform.position.y;
     }
 
     // Update is called once per frame
@@ -25,17 +29,17 @@ public class GameManager : MonoBehaviour
             Application.Quit();
         }
 
-        if (startPlatform != null)
-        {
-            Transform spTr = startPlatform.transform;
-        
-            if (spTr.position.y <= -2.0f) {
-                Destroy(startPlatform);
-                startPlatform = null;
-            } else
-                spTr.Translate(Vector3.down * (Level.descentSpeed * Time.deltaTime), Space.World);
+        if (startPlatform.position.y > -2.0f) {
+            startPlatform.Translate(Vector3.down * (Level.descentSpeed * Time.deltaTime), Space.World);
         }
         
         lightTr.position = new Vector3(0, player.position.y + lightDist, 0);
+    }
+
+    public void OnPlayerDeath()
+    {
+        Debug.Log("DED");
+        startPlatform.position = new Vector3(0, startY, 0);
+        tube.ResetLevels();
     }
 }

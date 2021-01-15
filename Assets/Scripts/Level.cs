@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Level : MonoBehaviour
 {
@@ -10,7 +12,8 @@ public class Level : MonoBehaviour
     public static float descentSpeed = 1.0f;
     public static float height = 6.0f;
     public static float radius = 13.0f;
-    
+
+    private float startY;
     private List<GameObject> elements;
 
     public Level()
@@ -26,6 +29,8 @@ public class Level : MonoBehaviour
 
     public void Setup()
     {
+        startY = transform.position.y;
+        
         foreach (GameObject elemen in elements) {
             Destroy(elemen);
         }
@@ -60,7 +65,12 @@ public class Level : MonoBehaviour
     {
         transform.Translate(Vector3.down * (descentSpeed * Time.deltaTime), Space.World);
     }
-    
+
+    public void ResetHeight()
+    {
+        transform.position = new Vector3(0, startY, 0);
+    }
+
     void shuffle<T>(T[] array)
     {
         // Knuth shuffle algorithm :: courtesy of Wikipedia :)

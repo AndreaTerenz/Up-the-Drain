@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 114963311885979670}
   - component: {fileID: 114497868231759342}
   - component: {fileID: 114762042097486276}
+  - component: {fileID: 8294509299152404383}
   m_Layer: 0
   m_Name: First person controller full
   m_TagString: Untagged
@@ -365,3 +366,15 @@ MonoBehaviour:
   defaultCapsuleColliderHeight: 0
   groundCheck: {fileID: 114503055206606986}
   keys: 3201000031010000
+--- !u!114 &8294509299152404383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773623360729482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e33a8092cab009c86e5499672ffba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
