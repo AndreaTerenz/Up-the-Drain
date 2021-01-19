@@ -40,6 +40,5 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("DED");
         startPlatform.position = new Vector3(0, startY, 0);
-        tube.ResetLevels();
     }
 }

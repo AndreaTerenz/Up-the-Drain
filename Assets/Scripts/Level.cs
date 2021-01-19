@@ -13,7 +13,7 @@ public class Level : MonoBehaviour
     public static float height = 6.0f;
     public static float radius = 13.0f;
 
-    private float startY;
+    private float resetY;
     private List<GameObject> elements;
 
     public Level()
@@ -29,7 +29,7 @@ public class Level : MonoBehaviour
 
     public void Setup()
     {
-        startY = transform.position.y;
+        resetY = transform.position.y;
         
         foreach (GameObject elemen in elements) {
             Destroy(elemen);
@@ -63,12 +63,17 @@ public class Level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y % (height + height/2) == 0)
+        {
+            resetY = transform.position.y;
+        }
+        
         transform.Translate(Vector3.down * (descentSpeed * Time.deltaTime), Space.World);
     }
 
     public void ResetHeight()
     {
-        transform.position = new Vector3(0, startY, 0);
+        transform.position = new Vector3(0, resetY, 0);
     }
 
     void shuffle<T>(T[] array)
