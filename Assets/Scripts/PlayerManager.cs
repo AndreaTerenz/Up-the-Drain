@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     public GameManager gm;
     public Collider groundCollider;
@@ -12,16 +9,21 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startY = this.transform.position.y;
+        startY = transform.position.y;
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider == groundCollider)
         {
-            this.transform.position = new Vector3(0, startY, 0); 
-            
-            gm.OnPlayerDeath();
+            Debug.Log("DED");
+            Reset();
+            gm.ResetGame();
         }
+    }
+
+    public void Reset()
+    {
+        transform.position = new Vector3(0, startY, 0);
     }
 }
