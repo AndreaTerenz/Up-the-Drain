@@ -5,30 +5,19 @@ using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
-    public Button resumeBtn;
-    public Button restartBtn;
-    public Button quitBtn;
     public GameManager mngr;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        resumeBtn.onClick.AddListener(onResumeClick);
-        restartBtn.onClick.AddListener(onRestartClick);
-        quitBtn.onClick.AddListener(onQuitClick);
-    }
 
-    void onRestartClick()
+    public void onRestartClick()
     {
         mngr.ResetGame(false);    
     }
 
-    void onQuitClick()
+    public void onQuitClick()
     {
         Application.Quit();
     }
         
-    void onResumeClick()
+    public void onResumeClick()
     {
         mngr.gameIsPaused = false;
     }
