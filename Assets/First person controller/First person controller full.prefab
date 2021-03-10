@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 4207293392497186}
+  mngr: {fileID: 0}
   sensitivity: 2
   smoothing: 2
 --- !u!114 &114103969153859672
@@ -378,3 +379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e33a8092cab009c86e5499672ffba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  groundCollider: {fileID: 0}
+  camera: {fileID: 4490257326247362}
