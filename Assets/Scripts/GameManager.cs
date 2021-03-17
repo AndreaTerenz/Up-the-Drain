@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
             
             pauseMenu.SetActive(_paused);
             Time.timeScale = (_paused) ? 0f : 1f;
-            Cursor.visible = _paused;
+            Cursor.visible = _paused; 
             Cursor.lockState = (_paused) ? CursorLockMode.None : CursorLockMode.Locked;
         }
     }
