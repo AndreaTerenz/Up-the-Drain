@@ -8,10 +8,10 @@ public class Level : MonoBehaviour
 {
     public GameObject platformPF;
     public int elementsCount = 10;
-    public int minimumElements = 3;
+    public int minimumElements = 2;
     public static float descentSpeed = 1.0f;
     public static float height = 6.0f;
-    public static float radius = 13.0f;
+    public static float radius = 10.0f;
 
     private float resetY;
     private List<GameObject> elements;
@@ -38,7 +38,7 @@ public class Level : MonoBehaviour
         bool[] spawn = new bool[elementsCount];
 
         for (int i = 0; i < elementsCount; i++) {
-            spawn[i] = (Random.value > 0.75f) || (i < minimumElements);
+            spawn[i] = (Random.value > 0.85f) || (i < minimumElements);
         }
 
         shuffle(spawn);
@@ -52,9 +52,11 @@ public class Level : MonoBehaviour
                 float z = Mathf.Sin(angle) * radius;
                 Vector3 pos = transform.position + new Vector3(x, 0, z);
                 float angleDegrees = -angle*Mathf.Rad2Deg;
-                Quaternion rot = Quaternion.Euler(-90, angleDegrees + 90, 0);
+                Quaternion rot = Quaternion.Euler(0, angleDegrees + 180 + 27, 0);
                 GameObject element = Instantiate(platformPF, pos, rot);
-                element.transform.parent = this.transform;
+                element.transform.parent = transform;
+                // element.transform.Rotate(new Vector3(90f, 0f, 0f));
+                // element.transform.LookAt(transform);
                 elements.Add(element);
             }
         }

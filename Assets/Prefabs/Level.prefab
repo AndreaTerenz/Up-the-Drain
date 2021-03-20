@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5325195281905812100}
   - component: {fileID: 5505644478430754282}
   m_Layer: 0
-  m_Name: Sector
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2302018921701576028}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18, y: 18, z: 3}
+  m_LocalScale: {x: 15, y: 15, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b430062ca407a4b9c0446be2f7749a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformPF: {fileID: 3001319395789502813, guid: 420d521ba1b6cdc69af66d79c290bde3, type: 3}
+  platformPF: {fileID: 6853336408248496884, guid: dab7c9b3c14a0e5a1bef0918f4a78658, type: 3}
   elementsCount: 10
   minimumElements: 3
-  descentSpeed: 1
