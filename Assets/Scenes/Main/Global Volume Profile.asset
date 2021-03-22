@@ -78,6 +78,7 @@ MonoBehaviour:
   - {fileID: 3252606380631154855}
   - {fileID: -3696083719451544172}
   - {fileID: 215929756162491721}
+  - {fileID: 8983457687342193407}
 --- !u!114 &215929756162491721
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -184,7 +185,7 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.06
     min: 0
   scatter:
     m_OverrideState: 0
@@ -196,8 +197,8 @@ MonoBehaviour:
     m_Value: 65472
     min: 0
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.3537736, b: 0.3537736, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
@@ -268,12 +269,12 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   temperature:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 26
     min: -100
     max: 100
   tint:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 17
     min: -100
     max: 100

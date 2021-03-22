@@ -6,14 +6,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Transform lightTr;
     public GameObject player;
     public Transform startPlatform;
     public GameObject pauseMenu;
     public Tube tube;
-
-    private Transform plr_tr;
+    
     private PlayerManager plr_mngr;
+    private float startY;
     
     private bool _paused = false;
     public bool gameIsPaused
@@ -29,17 +28,12 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = (_paused) ? CursorLockMode.None : CursorLockMode.Locked;
         }
     }
-    
-    private float startY;
-    private float lightDist;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        plr_tr = player.transform;
         plr_mngr = player.GetComponent<PlayerManager>();
         
-        lightDist = Math.Abs(plr_tr.position.y - lightTr.position.y);
         startY = startPlatform.position.y;
         
         ResetGame();
@@ -58,14 +52,9 @@ public class GameManager : MonoBehaviour
             gameIsPaused = true;
         }
         
-        if (!gameIsPaused)
+        if ((!gameIsPaused) && (startPlatform.position.y > -2.0f))
         {
-            if (startPlatform.position.y > -2.0f)
-            {
-                startPlatform.Translate(Vector3.down * (Level.descentSpeed * Time.deltaTime), Space.World);
-            }
-
-            lightTr.position = new Vector3(0, plr_tr.position.y + lightDist, 0);
+            startPlatform.Translate(Vector3.down * (Level.descentSpeed * Time.deltaTime), Space.World);
         }
     }
 
