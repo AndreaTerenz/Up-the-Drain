@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Transform startPlatform;
     public GameObject pauseMenu;
+    public GameObject HUD;
     public Tube tube;
-    
+
+    private HUDManager HUDmngr;
     private PlayerManager plr_mngr;
     private float startY;
     
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
         {
             _paused = value;
             
+            HUD.SetActive(!_paused);
             pauseMenu.SetActive(_paused);
             Time.timeScale = (_paused) ? 0f : 1f;
             Cursor.visible = _paused; 
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         plr_mngr = player.GetComponent<PlayerManager>();
+        HUDmngr = HUD.GetComponent<HUDManager>();
         
         startY = startPlatform.position.y;
         
@@ -66,6 +70,10 @@ public class GameManager : MonoBehaviour
         if (!resetFromPlayer)
         {
             plr_mngr.Reset();
+        }
+        else
+        {
+            HUDmngr.UpdateDeaths();
         }
     }
 }

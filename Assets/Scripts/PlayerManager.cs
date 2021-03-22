@@ -5,7 +5,10 @@ public class PlayerManager : MonoBehaviour
     public GameManager gm;
     public Collider groundCollider;
     private float startY;
-    
+
+    private int gianni = 0;
+    private GameObject uau = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +19,15 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.collider == groundCollider)
         {
-            Debug.Log("DED");
             Reset();
             gm.ResetGame();
+        }
+        else if (other.gameObject.CompareTag("Platform") && other.gameObject != uau)
+        {
+            uau = other.gameObject;
+            gianni += 1;
+            
+            Debug.Log(gianni);
         }
     }
 

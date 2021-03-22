@@ -6,7 +6,12 @@ using UnityEngine;
 public class OptionsMenu : MonoBehaviour
 {
     public PauseManager parentMngr;
-    private SettingsManager setMngr = new SettingsManager();
+    private SettingsManager setMngr;
+
+    private void Start()
+    {
+        setMngr = new SettingsManager();
+    }
 
     public void onFPSToggled()
     {
@@ -25,6 +30,7 @@ public class OptionsMenu : MonoBehaviour
 
     public void CloseMenu()
     {
+        gameObject.SetActive(false);
         parentMngr.onOptionsMenuClosed();
     }
 }
