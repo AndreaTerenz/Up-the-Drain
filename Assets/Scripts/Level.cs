@@ -7,57 +7,61 @@ using Random = UnityEngine.Random;
 public class Level : MonoBehaviour
 {
     public GameObject platformPF;
-    public int elementsCount = 10;
+    public int platsCount = 10;
     public int minimumElements = 2;
     public static float descentSpeed = 1.0f;
     public static float height = 6.0f;
     public static float radius = 10.0f;
 
     private float resetY;
-    private List<GameObject> elements;
+    private List<GameObject> platforms;
 
     public Level()
     {
-        this.elements = new List<GameObject>();
+        this.platforms = new List<GameObject>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Setup();
-    }
-
-    public void Setup()
+    public void Setup(int id)
     {
         resetY = transform.position.y;
         
-        foreach (GameObject elemen in elements) {
+        foreach (GameObject elemen in platforms) {
             Destroy(elemen);
         }
         
-        bool[] spawn = new bool[elementsCount];
+        bool[] spawn = new bool[platsCount];
 
-        for (int i = 0; i < elementsCount; i++) {
-            spawn[i] = (Random.value > 0.85f) || (i < minimumElements);
+        for (int i = 0; i < platsCount; i++) {
+            spawn[i] = (i < minimumElements) || (Random.value > 0.85f);
         }
 
         shuffle(spawn);
 
-        for (int i = 0; i < elementsCount; i++)
+        for (int i = 0; i < platsCount; i++)
         {
             if (spawn[i])
             {
-                float angle = i * Mathf.PI * 2 / elementsCount;
+                float angle = i * Mathf.PI * 2 / platsCount;
                 float x = Mathf.Cos(angle) * radius;
                 float z = Mathf.Sin(angle) * radius;
                 Vector3 pos = transform.position + new Vector3(x, 0, z);
                 float angleDegrees = -angle*Mathf.Rad2Deg;
                 Quaternion rot = Quaternion.Euler(0, angleDegrees + 180 + 27, 0);
-                GameObject element = Instantiate(platformPF, pos, rot);
-                element.transform.parent = transform;
-                // element.transform.Rotate(new Vector3(90f, 0f, 0f));
-                // element.transform.LookAt(transform);
-                elements.Add(element);
+                GameObject platform = Instantiate(platformPF, pos, rot);
+                platform.GetComponent<Platform>().levelID = id;
+                platform.transform.parent = transform;
+                platforms.Add(platform);
+            }
+        }
+    }
+
+    public void SetPlatformsID(int id)
+    {
+        foreach (var p in platforms)
+        {
+            if (p != null)
+            {
+                p.GetComponent<Platform>().levelID = id;
             }
         }
     }

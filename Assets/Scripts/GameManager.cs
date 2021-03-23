@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private HUDManager HUDmngr;
     private PlayerManager plr_mngr;
     private float startY;
+    private int bestLevel = 3;
     
     private bool _paused = false;
     public bool gameIsPaused
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         plr_mngr = player.GetComponent<PlayerManager>();
         HUDmngr = HUD.GetComponent<HUDManager>();
+        //UpdateLevelsInHUD(3);
         
         startY = startPlatform.position.y;
         
@@ -62,10 +64,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateLevelsInHUD(int currentLvl)
+    {
+        HUDmngr.SetCurrentLevel(currentLvl);
+    }
+
     public void ResetGame(bool resetFromPlayer = true)
     {
         gameIsPaused = false;
         startPlatform.position = new Vector3(0, startY, 0);
+        tube.Reset();
+        HUDmngr.SetCurrentLevel(3);
 
         if (!resetFromPlayer)
         {

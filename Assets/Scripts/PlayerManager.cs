@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
     private float startY;
 
     private int gianni = 0;
-    private GameObject uau = null;
+    private GameObject lastPlatform = null;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +22,18 @@ public class PlayerManager : MonoBehaviour
             Reset();
             gm.ResetGame();
         }
-        else if (other.gameObject.CompareTag("Platform") && other.gameObject != uau)
+        else
         {
-            uau = other.gameObject;
-            gianni += 1;
+            GameObject otherObj = other.gameObject;
             
-            Debug.Log(gianni);
+            if (otherObj.CompareTag("Platform") && otherObj != lastPlatform)
+            {
+                lastPlatform = otherObj;
+                int lvl = otherObj.GetComponentInParent<Platform>().levelID;
+                
+                Debug.Log(lvl);
+                gm.UpdateLevelsInHUD(lvl);
+            }
         }
     }
 
