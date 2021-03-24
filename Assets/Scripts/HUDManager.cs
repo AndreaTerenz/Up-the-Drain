@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -22,7 +20,7 @@ public class HUDManager : MonoBehaviour
             int current = int.Parse(deathsLabel.GetParsedText());
             SetDeaths(current+1);
         }
-        catch (FormatException e)
+        catch (FormatException)
         {
             SetDeaths(0);
         }
@@ -36,7 +34,7 @@ public class HUDManager : MonoBehaviour
         {
             best = Math.Max(int.Parse(bestLvlLabel.GetParsedText()), lvl);
         }
-        catch (FormatException e)
+        catch (FormatException)
         {
             best = lvl;
         }

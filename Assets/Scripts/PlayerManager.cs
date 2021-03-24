@@ -5,8 +5,7 @@ public class PlayerManager : MonoBehaviour
     public GameManager gm;
     public Collider groundCollider;
     private float startY;
-
-    private int gianni = 0;
+    
     private GameObject lastPlatform = null;
 
     // Start is called before the first frame update
@@ -31,7 +30,6 @@ public class PlayerManager : MonoBehaviour
                 lastPlatform = otherObj;
                 int lvl = otherObj.GetComponentInParent<Platform>().levelID;
                 
-                Debug.Log(lvl);
                 gm.UpdateLevelsInHUD(lvl);
             }
         }

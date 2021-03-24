@@ -1,35 +1,57 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
     public PauseManager parentMngr;
-    private SettingsManager setMngr;
+    public SettingsManager setMngr;
 
-    private void Start()
+    public Toggle fpsToggle;
+    public Slider fovSlider;
+
+    public void Start()
     {
-        setMngr = new SettingsManager();
+        SettingsToUI();
+    }
+    
+    public void SettingsToUI()
+    {
+        fpsToggle.isOn = setMngr.showFPS;
+        fovSlider.value = setMngr.cameraFOV;
     }
 
     public void onFPSToggled()
     {
-        setMngr.showFPS = !setMngr.showFPS;
+        setMngr.showFPS = fpsToggle.isOn;
     }
 
-    public void onFOVChanged(float newVal)
+    public void onFOVChanged()
     {
-        setMngr.fov = newVal;
+        setMngr.cameraFOV = fovSlider.value;
     }
 
-    public void ApplyAndClose()
+    public void OnApplyClick()
     {
         setMngr.ApplyValues();
+        CloseMenu();
+    }
+
+    public void OnCancelClick()
+    {
+        setMngr.ResetEdits();
+        CloseMenu();
+    }
+
+    public void OnResetClick()
+    {
+        setMngr.ResetToDefaults();
+        CloseMenu();
     }
 
     public void CloseMenu()
     {
+        SettingsToUI();
         gameObject.SetActive(false);
         parentMngr.onOptionsMenuClosed();
     }
