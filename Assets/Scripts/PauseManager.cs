@@ -4,10 +4,10 @@ public class PauseManager : MonoBehaviour
 {
     public GameManager mngr;
     public GameObject optMenu;
-    public GameObject mainPanel;
     
     public void onRestartClick()
     {
+        gameObject.SetActive(false);
         mngr.ResetGame(false);    
     }
 
@@ -18,6 +18,7 @@ public class PauseManager : MonoBehaviour
         
     public void onResumeClick()
     {
+        gameObject.SetActive(false);
         mngr.gameIsPaused = false;
     }
 
@@ -30,5 +31,14 @@ public class PauseManager : MonoBehaviour
     public void onOptionsMenuClosed()
     {
         gameObject.SetActive(true);
+    }
+    
+    public void Update()
+    {
+        if (gameObject.activeSelf && Input.GetButtonDown("Cancel"))
+        {
+            mngr.handleEsc = false;
+            onResumeClick();
+        }
     }
 }

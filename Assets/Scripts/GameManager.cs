@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public GameObject HUD;
     public Tube tube;
 
+    [HideInInspector] public bool handleEsc = true;
+
     private HUDManager HUDmngr;
     private PlayerManager plr_mngr;
     private float startY;
@@ -21,7 +23,6 @@ public class GameManager : MonoBehaviour
             _paused = value;
             
             HUD.SetActive(!_paused);
-            pauseMenu.SetActive(_paused);
             Time.timeScale = (_paused) ? 0f : 1f;
             Cursor.visible = _paused; 
             Cursor.lockState = (_paused) ? CursorLockMode.None : CursorLockMode.Locked;
@@ -42,19 +43,31 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (!gameIsPaused)
         {
-            Application.Quit();
-        }
+            if (Input.GetButtonUp("Cancel"))
+            {
+                if (handleEsc)
+                {
+                    Application.Quit();
+                    Debug.Log("ono");
+                }
+                else
+                {
+                    handleEsc = true;
+                }
+            }
 
-        if (Input.GetKeyDown(KeyCode.P) && !gameIsPaused)
-        {
-            gameIsPaused = true;
-        }
+            if (Input.GetButton("Pause"))
+            {
+                pauseMenu.SetActive(true);
+                gameIsPaused = true;
+            }
         
-        if ((!gameIsPaused) && (startPlatform.position.y > -2.0f))
-        {
-            startPlatform.Translate(Vector3.down * (Level.descentSpeed * Time.deltaTime), Space.World);
+            if (startPlatform.position.y > -2.0f)
+            {
+                startPlatform.Translate(Vector3.down * (Level.descentSpeed * Time.deltaTime), Space.World);
+            }
         }
     }
 

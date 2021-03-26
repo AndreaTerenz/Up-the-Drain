@@ -55,4 +55,12 @@ public class OptionsMenu : MonoBehaviour
         gameObject.SetActive(false);
         parentMngr.onOptionsMenuClosed();
     }
+
+    public void Update()
+    {
+        if (gameObject.activeSelf && Input.GetButtonDown("Cancel"))
+        {
+            CloseMenu();
+        }
+    }
 }
