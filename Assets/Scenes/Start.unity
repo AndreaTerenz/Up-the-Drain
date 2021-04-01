@@ -321,19 +321,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 398564424}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
-        m_MethodName: onOptionsClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &398564424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +559,7 @@ RectTransform:
   m_GameObject: {fileID: 518640395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0, z: 1}
   m_Children:
   - {fileID: 877927060}
   - {fileID: 1371579017}
@@ -635,6 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ecdaba4a9eccf7db35304047b20bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMenu: {fileID: 1456137439}
 --- !u!1 &544917518
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,12 +4,18 @@ using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
-    public PauseManager parentMngr;
+    //TODO The parent menu should be of a more generic type than PauseManager in order to use this code for an option menu in the start screen
+    public PauseManager parentMenu;
     public SettingsManager setMngr;
 
     public Toggle fpsToggle;
     public Slider fovSlider;
 
+    public void OnEnable()
+    {
+        LeanTween.scale(gameObject, new Vector3(1, 1, 1), .1f).setIgnoreTimeScale(true);
+    }
+    
     public void Start()
     {
         SettingsToUI();
@@ -51,9 +57,12 @@ public class OptionsMenu : MonoBehaviour
 
     public void CloseMenu()
     {
-        SettingsToUI();
-        gameObject.SetActive(false);
-        parentMngr.onOptionsMenuClosed();
+        LeanTween.scale(gameObject, new Vector3(1, 0, 1), .1f).setIgnoreTimeScale(true).setOnComplete(() =>
+        {
+            SettingsToUI();
+            gameObject.SetActive(false);
+            parentMenu.onOptionsMenuClosed();
+        });
     }
 
     public void Update()

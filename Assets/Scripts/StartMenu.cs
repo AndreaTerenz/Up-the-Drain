@@ -4,19 +4,35 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
     public GameObject helpPane;
+    private bool isShowingHelp = false;
     
     public void OnStartClick()
     {
-        SceneManager.LoadScene("Main");
+        if (!isShowingHelp)
+        {
+            SceneManager.LoadScene("Main");
+        }
     }
 
     public void OnHelpClick()
     {
-        helpPane.SetActive(true);
+        if (!isShowingHelp)
+        {
+            helpPane.SetActive(true);
+            isShowingHelp = true;
+        }
+    }
+
+    public void OnHelpClosed()
+    {
+        isShowingHelp = false;
     }
 
     public void OnQuitClick()
     {
-        Application.Quit();
+        if (!isShowingHelp)
+        {
+            Application.Quit();
+        }
     }
 }

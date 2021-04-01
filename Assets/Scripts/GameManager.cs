@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public GameObject HUD;
     public Tube tube;
 
+    public bool isDevScene = false;
+    
     [HideInInspector] public bool handleEsc = true;
 
     private HUDManager HUDmngr;
@@ -32,18 +34,27 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        plr_mngr = player.GetComponent<PlayerManager>();
-        HUDmngr = HUD.GetComponent<HUDManager>();
-        
-        startY = startPlatform.position.y;
-        
-        ResetGame();
+        if (!isDevScene)
+        {
+            plr_mngr = player.GetComponent<PlayerManager>();
+            HUDmngr = HUD.GetComponent<HUDManager>();
+
+            startY = startPlatform.position.y;
+
+            ResetGame();
+        }
+        else
+        {
+            Application.targetFrameRate = 120;
+            Cursor.visible = false; 
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gameIsPaused)
+        if (!isDevScene && !gameIsPaused)
         {
             if (Input.GetButtonUp("Cancel"))
             {
@@ -62,6 +73,7 @@ public class GameManager : MonoBehaviour
             {
                 pauseMenu.SetActive(true);
                 gameIsPaused = true;
+                
             }
         
             if (startPlatform.position.y > -2.0f)
