@@ -12,8 +12,8 @@ public class TurretController : MonoBehaviour
         
     public TURRET_KIND kind;
     public Transform player;
-    public Transform leftGun;
-    public Transform rightGun;
+    public GatlinController leftGun;
+    public GatlinController rightGun;
     public Transform gunsJoint;
     
     protected bool frozen = true;
@@ -21,6 +21,9 @@ public class TurretController : MonoBehaviour
     
     void Update()
     {
+        leftGun.spin = !frozen;
+        rightGun.spin = !frozen;
+        
         if (!frozen)
         {
             Vector3 selfPos = gameObject.transform.position;
@@ -29,7 +32,7 @@ public class TurretController : MonoBehaviour
             transform.LookAt(targetPos);
             transform.Rotate(Vector3.up, -90.0f);
 
-            if (kind == TURRET_KIND.NORMAL)
+            if (true)//(kind == TURRET_KIND.NORMAL)
             {
                 Vector3 jointPos = gunsJoint.position;
                 
@@ -38,9 +41,6 @@ public class TurretController : MonoBehaviour
                 float angle = Mathf.Rad2Deg * Mathf.Asin(vDist / dist);
                 gunsJoint.localEulerAngles = new Vector3(0, 0, angle - 0);
             }
-
-            leftGun.Rotate(Vector3.up, Constants.TURRENT_GUN_ROT_SPEED * Time.deltaTime);
-            rightGun.Rotate(Vector3.up, Constants.TURRENT_GUN_ROT_SPEED * Time.deltaTime);
         }
     }
 
