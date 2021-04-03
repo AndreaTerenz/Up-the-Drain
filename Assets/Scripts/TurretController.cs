@@ -31,22 +31,16 @@ public class TurretController : MonoBehaviour
 
             if (kind == TURRET_KIND.NORMAL)
             {
-                float dist = Vector3.Distance(selfPos, playerPos);
-                float vDist = Mathf.Abs(selfPos.y - playerPos.y);
+                Vector3 jointPos = gunsJoint.position;
+                
+                float dist = Vector3.Distance(jointPos, playerPos);
+                float vDist = Mathf.Abs(jointPos.y - playerPos.y);
                 float angle = Mathf.Rad2Deg * Mathf.Asin(vDist / dist);
-                gunsJoint.localEulerAngles = new Vector3(0, 0, angle - 90);
+                gunsJoint.localEulerAngles = new Vector3(0, 0, angle - 0);
             }
 
-            switch (kind)
-            {
-                case TURRET_KIND.NORMAL: gunsRotAxis = Vector3.left;
-                    break;
-                case TURRET_KIND.SMALL: gunsRotAxis = Vector3.up;
-                    break;
-            }
-
-            leftGun.Rotate(gunsRotAxis, 500.0f * Time.deltaTime);
-            rightGun.Rotate(gunsRotAxis, 500.0f * Time.deltaTime);
+            leftGun.Rotate(Vector3.up, Constants.TURRENT_GUN_ROT_SPEED * Time.deltaTime);
+            rightGun.Rotate(Vector3.up, Constants.TURRENT_GUN_ROT_SPEED * Time.deltaTime);
         }
     }
 
