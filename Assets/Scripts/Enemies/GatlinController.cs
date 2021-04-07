@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class GatlinController : MonoBehaviour
         get => _shoot;
         set
         {
-            _shoot = value;
+            _shoot = alwaysOn || value;
             if (_shoot)
             {
                 muzzleFlash.Play();
@@ -22,15 +23,25 @@ public class GatlinController : MonoBehaviour
         }
     }
 
+    public bool alwaysOn;
+    
     public Transform gunBody;
     public ParticleSystem muzzleFlash;
 
-    // Update is called once per frame
+    private GunController gunCtrl;
+
+    private void Start()
+    {
+        Shoot = alwaysOn;
+        gunCtrl = GetComponent<GunController>();
+    }
+
     void Update()
     {
         if (Shoot)
         {
             gunBody.Rotate(Vector3.up, Constants.GatlinRotSpeed * Time.deltaTime);
+            gunCtrl.Shoot(true);
         }
     }
 }

@@ -1,0 +1,4 @@
+Dev Console: https://unitylist.com/p/ov7/Unity-Developer-Console
+Shooting: https://www.youtube.com/watch?v=u0yksFw9PSs
+FPS controller: 
+UI animations: https://assetstore.unity.com/packages/tools/animation/leantween-3595

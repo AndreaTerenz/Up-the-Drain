@@ -469,6 +469,10 @@ PrefabInstance:
       propertyPath: mngr
       value: 
       objectReference: {fileID: 692143245}
+    - target: {fileID: 3342058013154873986, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8294509299152404383, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: gm
       value: 

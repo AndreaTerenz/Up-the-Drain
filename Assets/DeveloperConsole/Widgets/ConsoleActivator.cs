@@ -8,11 +8,9 @@ using UnityEngine;
 
 public class ConsoleActivator : MonoBehaviour
 {
-
-
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F4))
+        if (Input.GetButtonDown("Console"))
         {
             Console.DeveloperConsole.active = !Console.DeveloperConsole.active;
         }

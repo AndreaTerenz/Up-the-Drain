@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class BaseGun : MonoBehaviour
+public class GunController : MonoBehaviour
 {
     public float fireRate;
     public float maxSpreadAngle;
@@ -17,26 +17,8 @@ public class BaseGun : MonoBehaviour
     private float _inaccuracy;
     private float _shootingCoolDown;
     private float _recoilCoolDown;
-    private Func<string, bool> fireCheckFunction;
 
-    private void Start()
-    {
-        if (autoFire)
-        {
-            fireCheckFunction = Input.GetButton;
-        }
-        else
-        {
-            fireCheckFunction = Input.GetButtonDown;
-        }
-    }
-
-    void Update()
-    {
-        Shoot(fireCheckFunction("Fire1"));
-    }
-
-    private void Shoot(bool firePressed)
+    public void Shoot(bool firePressed)
     {
         _shootingCoolDown += Time.deltaTime * 60f;
 

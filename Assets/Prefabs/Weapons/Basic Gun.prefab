@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6490884195917985416}
   - component: {fileID: 6490884195917985415}
   - component: {fileID: 6490884195917985414}
+  - component: {fileID: 3001143733986987324}
   m_Layer: 0
   m_Name: Basic Gun
   m_TagString: Untagged
@@ -102,6 +103,18 @@ MonoBehaviour:
   autoFire: 1
   bullet: {fileID: 445800292162714385, guid: 3094d4c0f04f55833864433a94b4aade, type: 3}
   shootPoint: {fileID: 6490884196106340116}
+--- !u!114 &3001143733986987324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6490884195917985412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c7b612d505ff6dcb14f0843e8d4438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6490884196106340115
 GameObject:
   m_ObjectHideFlags: 0
