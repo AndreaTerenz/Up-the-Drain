@@ -6,12 +6,12 @@ public class HelpPanel : MonoBehaviour
     
     public void OnEnable()
     {
-        LeanTween.scale(gameObject, new Vector3(1, 1, 1), Constants.TWEEN_LENGHT);
+        LeanTween.scale(gameObject, new Vector3(1, 1, 1), Constants.TweenLenght);
     }
 
     public void OnCloseBtnClick()
     {
-        LeanTween.scale(gameObject, new Vector3(1, 0, 1), Constants.TWEEN_LENGHT).setOnComplete(() =>
+        LeanTween.scale(gameObject, new Vector3(1, 0, 1), Constants.TweenLenght).setOnComplete(() =>
         {
             gameObject.SetActive(false);
             startMenu.OnHelpClosed();

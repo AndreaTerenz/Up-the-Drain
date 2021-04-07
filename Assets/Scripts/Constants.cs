@@ -1,5 +1,5 @@
 public abstract class Constants
 {
-    public const float TWEEN_LENGHT = .1f;
-    public const float TURRENT_GUN_ROT_SPEED = 500.0f;
+    public const float TweenLenght = .1f;
+    public const float GatlinRotSpeed = 1500.0f;
 }

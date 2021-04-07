@@ -8,7 +8,7 @@ public class PauseManager : MonoBehaviour
     
     public void OnEnable()
     {
-        LeanTween.scale(gameObject, new Vector3(1, 1, 1), Constants.TWEEN_LENGHT).setIgnoreTimeScale(true);
+        LeanTween.scale(gameObject, new Vector3(1, 1, 1), Constants.TweenLenght).setIgnoreTimeScale(true);
     }
     
     public void onResumeClick()
@@ -41,7 +41,7 @@ public class PauseManager : MonoBehaviour
 
     void ClosingTween(Action onCompl)
     {
-        LeanTween.scale(gameObject, new Vector3(1, 0, 1), Constants.TWEEN_LENGHT).setIgnoreTimeScale(true).setOnComplete(() => onCompl());
+        LeanTween.scale(gameObject, new Vector3(1, 0, 1), Constants.TweenLenght).setIgnoreTimeScale(true).setOnComplete(() => onCompl());
     }
     
     public void Update()
