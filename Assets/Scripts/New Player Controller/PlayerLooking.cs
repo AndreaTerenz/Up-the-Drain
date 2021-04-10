@@ -10,11 +10,14 @@ public class PlayerLooking : MonoBehaviour
     private Camera _cam;
     private Transform _camTr;
     private float _xRot;
+    private bool _crouching;
 
     private void Start()
     {
         _cam = playerCamera.GetComponent<Camera>();
         _camTr = playerCamera.transform;
+        
+        Debug.Log("Initial camera Y " + _camTr.localPosition);
     }
 
     void Update()
