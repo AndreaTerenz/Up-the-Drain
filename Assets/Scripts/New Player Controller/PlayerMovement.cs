@@ -23,7 +23,22 @@ public class PlayerMovement : MonoBehaviour
     
     private CharacterController _controller;
     
-    private float _vSpeed;
+    private PlayerState _state;
+    public PlayerState State
+    {
+        get => _state;
+        set
+        {
+            if (value != null)
+            {
+                _state = value;
+                _state.Start(this);
+            }
+        }
+    }
+    
+    [HideInInspector]
+    public float vertSpeed;
     
     private float _hSpeed;
     private float _hSpeedSprint;
@@ -46,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
+        State = new StandardState();
+        
         _controller = GetComponent<CharacterController>();
 
         _hSpeed = normalSpeed;
@@ -58,9 +75,28 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         _onGround = Physics.CheckSphere(groundCheck.position, grndCheckRadius, groundMask);
+        State = State.Update(this, _onGround);
+/*
+        vertSpeed = State.verticalSpeed;
+        _hSpeed = State.horizontalSpeed;
+        transform.localScale = State.scale;
+         
+        _controller.Move(new Vector3(0f, vertSpeed, 0f) * Time.deltaTime);
+        
+        float x = Mathf.Round(Input.GetAxis("Horizontal"));
+        float z = Mathf.Round(Input.GetAxis("Vertical"));
+
+        Debug.Log(x + " " + z);
+        
+        Vector3 moveDir = (transform.right * x) + (transform.forward * z);
+        Vector3 hMov = moveDir.normalized * (Time.deltaTime * _hSpeed);
+
+        _controller.Move(hMov);
+        */
         
         MoveVertically();
         MoveHorizontally();
+         
     }
 
     void MoveHorizontally()
@@ -77,25 +113,30 @@ public class PlayerMovement : MonoBehaviour
         _controller.Move(hMov);
     }
 
+    public float GetJumpSpeed()
+    {
+        return Mathf.Sqrt(jumpHeight * 2f * gravity);
+    }
+
     void MoveVertically()
     {
         if (_onGround)
         {
             //Debug.Log("on ground");
-            _vSpeed = Mathf.Max(0f, _vSpeed);
+            vertSpeed = Mathf.Max(0f, vertSpeed);
 
             if (Input.GetButtonDown("Jump"))
             {
-                _vSpeed = Mathf.Sqrt(jumpHeight * 2f * gravity);
+                vertSpeed = Mathf.Sqrt(jumpHeight * 2f * gravity);
             }
         }
         else
         {
             //Debug.Log("not on ground");
-            _vSpeed -= gravity * Time.deltaTime;
+            vertSpeed -= gravity * Time.deltaTime;
         }
 
-        _controller.Move(new Vector3(0f, _vSpeed, 0f) * Time.deltaTime);
+        _controller.Move(new Vector3(0f, vertSpeed, 0f) * Time.deltaTime);
     }
 
     void Crouch()

@@ -1734,10 +1734,11 @@ MonoBehaviour:
   crouchFactor: 0.5
   crouchSpeedMult: 0.5
   groundCheck: {fileID: 1259657350}
-  grndCheckRadius: 0.3
+  grndCheckRadius: 0.1
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  vertSpeed: 0
 --- !u!114 &801639668
 MonoBehaviour:
   m_ObjectHideFlags: 0
