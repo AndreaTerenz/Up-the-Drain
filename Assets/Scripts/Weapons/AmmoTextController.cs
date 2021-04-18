@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public interface AmmunitionStatusListener
+{
+    void OnNewStatus(int shots, int mags);
+}
+
 public class AmmoTextController : MonoBehaviour, AmmunitionStatusListener
 {
     public TextMeshPro ammoText;

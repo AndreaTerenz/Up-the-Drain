@@ -1,16 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class GunController : MonoBehaviour
 {
     //Rounds per second
     public float fireRate;
-    //public float maxSpreadAngle;
-    //public float timeTillMaxSpread;
     public bool autoFire = true;
+    public bool onGround;
 
     public GameObject bullet;
     public Transform shootPoint;
@@ -22,7 +18,7 @@ public class GunController : MonoBehaviour
     private bool _firePrssd;
     public bool firePressed
     {
-        get => _firePrssd && hasShots;
+        get => _firePrssd && hasShots && !onGround;
         set => _firePrssd = value;
     }
     

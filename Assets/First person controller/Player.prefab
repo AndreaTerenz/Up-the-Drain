@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 114762042097486276}
   - component: {fileID: 2439761723940802318}
   m_Layer: 0
-  m_Name: First person controller full
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,6 +602,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6361184177513287168}
+  - component: {fileID: 3050770674104161883}
   m_Layer: 0
   m_Name: Gun Attachment
   m_TagString: Untagged
@@ -623,6 +624,21 @@ Transform:
   m_Father: {fileID: 4490257326247362}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3050770674104161883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972491305548823291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70f0aad69e38d193beb513bbd7e23d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunHolderPF: {fileID: 6580368529641331193, guid: b529d0fcf8c5fa920a7c924144e3706b, type: 3}
+  gun: {fileID: 0}
+  pickupRayOrigin: {fileID: 4490257326247362}
 --- !u!1 &1963958859065967600
 GameObject:
   m_ObjectHideFlags: 0
