@@ -4,9 +4,10 @@ public class PlayerManager : MonoBehaviour
 {
     public GameManager gm;
     public Collider groundCollider;
-    private float startY;
+    public FirstPersonLook playerLook;
     
-    private GameObject lastPlatform = null;
+    private float startY;
+    private GameObject lastPlatform;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,11 @@ public class PlayerManager : MonoBehaviour
                 gm.UpdateLevelsInHUD(lvl);
             }
         }
+    }
+
+    public void SetPaused(bool p)
+    {
+        playerLook.enabled = p;
     }
 
     public void Reset()

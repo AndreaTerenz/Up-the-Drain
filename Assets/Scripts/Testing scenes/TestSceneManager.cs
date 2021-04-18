@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSceneManager : MonoBehaviour
+public class TestSceneManager : BaseManager
 {
     public GameObject player;
 

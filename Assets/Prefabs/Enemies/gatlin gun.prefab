@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527024070135991207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -17.53, z: -0}
+  m_LocalPosition: {x: -0, y: 0.007, z: 0.019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8312917724751569624}
@@ -42,9 +42,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Color: {r: 1, g: 0.72210133, b: 0.15566039, a: 1}
+  m_Intensity: 0.8
+  m_Range: 0.14179485
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -88,7 +88,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.15e-43, y: 4.713e-42, z: 1.02e-43, w: 0}
+  m_BoundingSphereOverride: {x: 7.1e-44, y: 1.899e-42, z: 1.02e-43, w: 1.5400494e+30}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -173,6 +173,7 @@ MonoBehaviour:
   maxSpreadAngle: 4
   timeTillMaxSpread: 4
   autoFire: 1
+  muzzleFlash: {fileID: 3674769395915824414}
   bullet: {fileID: 445800292162714385, guid: 3094d4c0f04f55833864433a94b4aade, type: 3}
   shootPoint: {fileID: 8312917724751569624}
 --- !u!1 &3317818973862182521
@@ -4143,7 +4144,7 @@ ParticleSystem:
       emitProbability: 1
   LightsModule:
     enabled: 1
-    ratio: 1
+    ratio: 0.7
     light: {fileID: 9002455808231065554}
     randomDistribution: 1
     color: 1

@@ -6,10 +6,11 @@ public class FirstPersonLook : MonoBehaviour
     Transform character;
     Vector2 currentMouseLook;
     Vector2 appliedMouseDelta;
-    public GameManager mngr;
     public float sensitivity = 1;
     public float smoothing = 2;
 
+    [HideInInspector]
+    public bool lookAround = true;
 
     void Reset()
     {
@@ -18,10 +19,12 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
-        if (mngr == null || !mngr.gameIsPaused)
+        if (lookAround)
         {
             // Get smooth mouse look.
-            Vector2 smoothMouseDelta = Vector2.Scale(new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")), Vector2.one * (sensitivity * smoothing));
+            Vector2 smoothMouseDelta =
+                Vector2.Scale(new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")),
+                    Vector2.one * sensitivity * smoothing);
             appliedMouseDelta = Vector2.Lerp(appliedMouseDelta, smoothMouseDelta, 1 / smoothing);
             currentMouseLook += appliedMouseDelta;
             currentMouseLook.y = Mathf.Clamp(currentMouseLook.y, -90, 90);

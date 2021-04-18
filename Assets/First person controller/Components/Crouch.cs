@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Crouch : MonoBehaviour
 {
+    public float crouchSpeed = 2;
     public float crouchYLocalPosition = 1;
+    [Tooltip("Head to lower when we crouch")]
     public Transform head;
     [HideInInspector]
     public float defaultHeadYLocalPosition;
@@ -12,10 +14,10 @@ public class Crouch : MonoBehaviour
     [HideInInspector]
     public float defaultCapsuleColliderHeight;
 
-    [SerializeField]
-    GroundCheck groundCheck;
+    public GroundCheck groundCheck;
+    public FirstPersonMovement character;
 
-    public KeyCode[] keys = new KeyCode[] { KeyCode.LeftControl, KeyCode.RightControl };
+    public KeyCode key = KeyCode.LeftControl;
     public bool IsCrouched { get; private set; }
     public event System.Action CrouchStart, CrouchEnd;
 
@@ -23,8 +25,8 @@ public class Crouch : MonoBehaviour
     void Reset()
     {
         head = GetComponentInChildren<Camera>().transform;
-
         capsuleCollider = GetComponentInChildren<CapsuleCollider>();
+        character = GetComponentInParent<FirstPersonMovement>();
 
         // Get or create the groundCheck object.
         groundCheck = GetComponentInChildren<GroundCheck>();
@@ -41,7 +43,7 @@ public class Crouch : MonoBehaviour
 
     void LateUpdate()
     {
-        if (IsKeyPressed(keys))
+        if (Input.GetKey(key))
         {
             // Enforce crouched y local position of the head.
             head.localPosition = new Vector3(head.localPosition.x, crouchYLocalPosition, head.localPosition.z);
@@ -57,6 +59,7 @@ public class Crouch : MonoBehaviour
             if (!IsCrouched)
             {
                 IsCrouched = true;
+                SetSpeedOverrideActive(true);
                 CrouchStart?.Invoke();
             }
         }
@@ -74,17 +77,19 @@ public class Crouch : MonoBehaviour
 
             // Reset state.
             IsCrouched = false;
+            SetSpeedOverrideActive(false);
             CrouchEnd?.Invoke();
         }
     }
 
 
-    static bool IsKeyPressed(KeyCode[] keys)
+    void SetSpeedOverrideActive(bool state)
     {
-        // Return true if any of the keys are down.
-        for (int i = 0; i < keys.Length; i++)
-            if (Input.GetKey(keys[i]))
-                return true;
-        return false;
+        if (state && !character.speedOverrides.Contains(SpeedOverride))
+            character.speedOverrides.Add(SpeedOverride);
+        if (!state && character.speedOverrides.Contains(SpeedOverride))
+            character.speedOverrides.Remove(SpeedOverride);
     }
+
+    float SpeedOverride() => crouchSpeed;
 }

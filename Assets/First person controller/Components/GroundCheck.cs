@@ -3,22 +3,27 @@
 public class GroundCheck : MonoBehaviour
 {
     public float maxGroundDistance = .3f;
-    public bool isGrounded;
+    public bool isGrounded = true;
+    public event System.Action Grounded;
 
+
+    void Reset() => transform.localPosition = Vector3.up * .01f;
 
     void LateUpdate()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, maxGroundDistance);
+        bool isGroundedNow = Physics.Raycast(transform.position, Vector3.down, maxGroundDistance);
+        if (isGroundedNow && !isGrounded)
+            Grounded?.Invoke();
+        isGrounded = isGroundedNow;
     }
 
     void OnDrawGizmosSelected()
     {
-        Vector3 trPos = transform.position;
         RaycastHit hit;
-        if (Physics.Raycast(trPos, Vector3.down, out hit, maxGroundDistance))
-            Debug.DrawLine(trPos, hit.point, Color.white);
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, maxGroundDistance))
+            Debug.DrawLine(transform.position, hit.point, Color.white);
         else
-            Debug.DrawLine(trPos, trPos + Vector3.down * maxGroundDistance, Color.red);
+            Debug.DrawLine(transform.position, transform.position + Vector3.down * maxGroundDistance, Color.red);
     }
 
 

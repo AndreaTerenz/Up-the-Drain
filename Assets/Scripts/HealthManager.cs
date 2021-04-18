@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    private float _health = 20f;
+    public float startingHealth = 200f;
+    
+    private float _health;
 
     public float currentHealth
     {
@@ -12,15 +15,21 @@ public class HealthManager : MonoBehaviour
         set
         {
             _health = value;
-            if (_health <= 0f)
-            {
-                Kill();
-            }
+            CheckHealth();
         }
     }
 
-    void Kill()
+    private void Start()
     {
-        Destroy(gameObject);
+        _health = startingHealth;
+    }
+
+    void CheckHealth()
+    {
+        Debug.Log(gameObject.name + " hit");
+        if (_health <= 0f)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -18,6 +18,10 @@ public class GunController : MonoBehaviour
     private float _shootingCoolDown;
     private float _recoilCoolDown;
 
+    private void Start()
+    {
+    }
+
     public void Shoot(bool firePressed)
     {
         _shootingCoolDown += Time.deltaTime * 60f;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : BaseManager
 {
     public GameObject player;
     public Transform startPlatform;
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
             _paused = value;
             
             HUD.SetActive(!_paused);
+            plr_mngr.SetPaused(!_paused);
             Time.timeScale = (_paused) ? 0f : 1f;
             Cursor.visible = _paused; 
             Cursor.lockState = (_paused) ? CursorLockMode.None : CursorLockMode.Locked;
