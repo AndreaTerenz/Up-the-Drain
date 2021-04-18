@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5901992673509519258}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,12 +154,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b1800304533471d9a6de1c4a3394a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5000
+  thrustForce: 5000
   damage: 20
-  hitPoint: {x: 0, y: 0, z: 0}
   targetsMask:
     serializedVersion: 2
     m_Bits: 0
+  range: 100
+  hitPoint: {x: 0, y: 0, z: 0}
 --- !u!54 &6416389524050394070
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -21,6 +21,6 @@ public class PlayerGun : MonoBehaviour
 
     void Update()
     {
-        gunCtrl.Shoot(fireCheckFunction("Fire1"));
+        gunCtrl.firePressed = fireCheckFunction("Fire1");
     }
 }

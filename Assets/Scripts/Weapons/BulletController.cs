@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public float thrustForce;
+    public float thrustForce = 5000;
     public float damage = 20f;
     public LayerMask targetsMask;
     public float range = 100f;
@@ -27,14 +27,17 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (targetsMask == (targetsMask | (1 << other.gameObject.layer)))
+        if (!other.CompareTag("Bullet"))
         {
-            if (other.gameObject.TryGetComponent(out HealthManager hm))
+            if (targetsMask == (targetsMask | (1 << other.gameObject.layer)))
             {
-                hm.currentHealth -= damage;
+                if (other.gameObject.TryGetComponent(out HealthManager hm))
+                {
+                    hm.currentHealth -= damage;
+                }
             }
-        }
         
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

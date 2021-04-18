@@ -26,7 +26,6 @@ public class HealthManager : MonoBehaviour
 
     void CheckHealth()
     {
-        Debug.Log(gameObject.name + " hit");
         if (_health <= 0f)
         {
             Destroy(gameObject);

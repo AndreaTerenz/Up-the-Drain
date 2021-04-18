@@ -38,10 +38,11 @@ public class GatlinController : MonoBehaviour
 
     void Update()
     {
+        gunCtrl.firePressed = Shoot;
+        
         if (Shoot)
         {
             gunBody.Rotate(Vector3.up, Constants.GatlinRotSpeed * Time.deltaTime);
-            gunCtrl.Shoot(true);
         }
     }
 }
