@@ -263,7 +263,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2916faa7d31ee3aa0b97ea2e80c838fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -637,7 +637,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunHolderPF: {fileID: 6580368529641331193, guid: b529d0fcf8c5fa920a7c924144e3706b, type: 3}
-  gun: {fileID: 0}
   pickupRayOrigin: {fileID: 4490257326247362}
 --- !u!1 &1963958859065967600
 GameObject:

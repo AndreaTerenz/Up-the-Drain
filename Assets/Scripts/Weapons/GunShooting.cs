@@ -1,61 +1,74 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunController : MonoBehaviour
+public class GunShooting : MonoBehaviour
 {
+    #region Publics
+    [Header("Firing settings")]
     //Rounds per second
     public float fireRate;
     public bool autoFire = true;
-    public bool onGround;
 
+    [Header("Assets")]
     public GameObject bullet;
     public Transform shootPoint;
-    
+
     [Header("Magazine")]
+    public bool usesMags = true;
     public int roundsPerMag;
     public int magsCount;
 
+    #endregion
+    
+    #region Privates
+
+    private float _shootingCoolDown;
+    private GunGroundCheck _ground;
+    private List<AmmunitionStatusListener> _ammoListeners = new List<AmmunitionStatusListener>();
+    
     private bool _firePrssd;
     public bool firePressed
     {
-        get => _firePrssd && hasShots && !onGround;
+        get => _firePrssd && hasShots && !_ground.dropped;
         set => _firePrssd = value;
     }
     
-    private float _shootingCoolDown;
     private int _shotsLeft;
-
     private int shots
     {
         get => _shotsLeft;
         set
         {
-            if (_shotsLeft <= 0)
+            if (usesMags)
             {
-                if (magsCount > 0)
+                if (_shotsLeft <= 0)
                 {
-                    Debug.Log("Reload");
-                    _shotsLeft = roundsPerMag;
-                    magsCount -= 1;
+                    if (magsCount > 0)
+                    {
+                        Debug.Log("Reload");
+                        _shotsLeft = roundsPerMag;
+                        magsCount -= 1;
+                    }
                 }
+                else
+                {
+                    _shotsLeft = value;
+                }
+
+                _ammoListeners.ForEach(listener => listener.OnNewStatus(_shotsLeft, magsCount));
             }
-            else
-            {
-                _shotsLeft = value;
-            }
-            
-            _ammoListeners.ForEach(listener => listener.OnNewStatus(_shotsLeft, magsCount));
         }
     }
     private bool hasShots
     {
-        get => _shotsLeft > 0 || magsCount > 0;
+        get => !usesMags || _shotsLeft > 0 || magsCount > 0;
     }
 
-    private List<AmmunitionStatusListener> _ammoListeners = new List<AmmunitionStatusListener>();
-    
+    #endregion
+
     private void Start()
     {
+        _ground = GetComponent<GunGroundCheck>();
         _shotsLeft = roundsPerMag;
     }
     

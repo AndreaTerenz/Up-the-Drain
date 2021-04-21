@@ -28,12 +28,12 @@ public class GatlinController : MonoBehaviour
     public Transform gunBody;
     public ParticleSystem muzzleFlash;
 
-    private GunController gunCtrl;
+    private GunShooting gunCtrl;
 
     private void Start()
     {
         Shoot = alwaysOn;
-        gunCtrl = GetComponent<GunController>();
+        gunCtrl = GetComponent<GunShooting>();
     }
 
     void Update()

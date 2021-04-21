@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 821803154728078953}
   - component: {fileID: 6154794577684787243}
   - component: {fileID: 770792846712627254}
-  - component: {fileID: 2838990823618470592}
+  - component: {fileID: 3375602551595332096}
   m_Layer: 0
   m_Name: gatlin gun
   m_TagString: Untagged
@@ -157,7 +157,7 @@ CapsuleCollider:
   m_Height: 1.31
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.36}
---- !u!114 &2838990823618470592
+--- !u!114 &3375602551595332096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,16 +166,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 821803154728078954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c87590d86964cb66ab584744e12123a9, type: 3}
+  m_Script: {fileID: 11500000, guid: dd85b3151b7214827a2c2964bd53cd8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 8
-  maxSpreadAngle: 4
-  timeTillMaxSpread: 4
+  fireRate: 10
   autoFire: 1
-  muzzleFlash: {fileID: 3674769395915824414}
   bullet: {fileID: 445800292162714385, guid: 3094d4c0f04f55833864433a94b4aade, type: 3}
   shootPoint: {fileID: 8312917724751569624}
+  usesMags: 0
+  roundsPerMag: 0
+  magsCount: 0
 --- !u!1 &3317818973862182521
 GameObject:
   m_ObjectHideFlags: 0

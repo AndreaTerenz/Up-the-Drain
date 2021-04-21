@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class PlayerGun : MonoBehaviour
 {
-    private GunController gunCtrl;
+    private GunShooting gunCtrl;
     private Func<string, bool> fireCheckFunction;
 
     private void Start()
     {
-        gunCtrl = GetComponent<GunController>();
+        gunCtrl = GetComponent<GunShooting>();
         if (gunCtrl.autoFire)
         {
             fireCheckFunction = Input.GetButton;

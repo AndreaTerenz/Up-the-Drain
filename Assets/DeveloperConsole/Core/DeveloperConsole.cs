@@ -198,7 +198,6 @@ namespace Console
             // Ensure the script is not deleted while loading.
             if (!created)
             {
-                DontDestroyOnLoad(this.gameObject);
                 created = true;
             }
             else
