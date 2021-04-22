@@ -8,6 +8,7 @@ public class GunShooting : MonoBehaviour
     //Rounds per second
     public float fireRate;
     public bool autoFire = true;
+    public LayerMask bulletLayerMask;
 
     [Header("Assets")]
     public GameObject bullet;
@@ -97,7 +98,9 @@ public class GunShooting : MonoBehaviour
         if (Physics.Raycast(transform.position, rot * Vector3.forward, out RaycastHit info, 10000f))
         {
             GameObject tmp = Instantiate(bullet, shootPoint.position, rot);
-            tmp.GetComponent<BulletController>().hitPoint = info.point;
+            BulletController tmpCtrl = tmp.GetComponent<BulletController>();
+            tmpCtrl.hitPoint = info.point;
+            tmpCtrl.targetsMask = bulletLayerMask;
         }
     }
 

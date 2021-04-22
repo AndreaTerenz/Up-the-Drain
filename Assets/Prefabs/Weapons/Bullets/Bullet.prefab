@@ -155,10 +155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustForce: 5000
-  damage: 20
+  damage: 200
   targetsMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   range: 100
   hitPoint: {x: 0, y: 0, z: 0}
 --- !u!54 &6416389524050394070

@@ -191,6 +191,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 30
   autoFire: 1
+  bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 192
   bullet: {fileID: 445800292162714385, guid: 216d91f8c6dec5de6ba7944007d00dd0, type: 3}
   shootPoint: {fileID: 5008439484379664970}
   usesMags: 1

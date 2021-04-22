@@ -4,10 +4,12 @@ public class BulletController : MonoBehaviour
 {
     public float thrustForce = 5000;
     public float damage = 20f;
-    public LayerMask targetsMask;
     public float range = 100f;
+    
     [HideInInspector]
     public Vector3 hitPoint;
+    [HideInInspector]
+    public LayerMask targetsMask;
     
     private Vector3 _start;
 
