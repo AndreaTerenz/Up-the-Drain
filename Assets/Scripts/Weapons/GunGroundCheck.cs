@@ -3,6 +3,7 @@ using UnityEngine;
 public class GunGroundCheck : MonoBehaviour
 {
     public MeshCollider bodyCollider;
+    public bool startsDropped = false;
     
     public bool dropped
     {
@@ -60,10 +61,11 @@ public class GunGroundCheck : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _tr = transform;
+
+        startsDropped = startsDropped || ReferenceEquals(parentTransform, null);
         
-        applyDropForce = !ReferenceEquals(parentTransform, null);
-        dropped = ReferenceEquals(parentTransform, null);
-        
-        Debug.Log(gameObject.name + " " + dropped);
+        applyDropForce = !startsDropped;
+        dropped = startsDropped;
+        Debug.Log(dropped);
     }
 }

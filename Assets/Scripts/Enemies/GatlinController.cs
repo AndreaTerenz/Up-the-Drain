@@ -12,21 +12,14 @@ public class GatlinController : MonoBehaviour
         set
         {
             _shoot = alwaysOn || value;
-            if (_shoot)
-            {
-                muzzleFlash.Play();
-            }
-            else
-            {
-                muzzleFlash.Stop();
-            }
+            muzzleFlash.SetActive(_shoot);
         }
     }
 
     public bool alwaysOn;
     
     public Transform gunBody;
-    public ParticleSystem muzzleFlash;
+    public GameObject muzzleFlash;
 
     private GunShooting gunCtrl;
 

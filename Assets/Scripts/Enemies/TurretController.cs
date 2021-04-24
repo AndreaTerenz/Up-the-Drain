@@ -28,7 +28,7 @@ public class TurretController : MonoBehaviour
         
         leftGun.Shoot = _active;
         rightGun.Shoot = _active;
-        
+
         if (_active)
         {
             Vector3 trgt = new Vector3(_targetPos.x, _selfPos.y, _targetPos.z);
@@ -57,13 +57,14 @@ public class TurretController : MonoBehaviour
     {
         if (Mathf.Abs(AngleToTarget()) < maxAngle && DistanceToTarget() < maxRange)
         {
+            Debug.Log(gameObject.name);
             Vector3 dir = (target.position - _gunsPos).normalized;
-            RaycastHit info;
-            bool rayHit = Physics.Raycast(_gunsPos, dir, out info, maxRange);
+            
+            Debug.DrawRay(_gunsPos, dir, Color.red);
+            
+            bool rayHit = Physics.Raycast(_gunsPos, dir, out RaycastHit info, maxRange, LayerMask.GetMask("Player"));
 
-            bool output = rayHit && (info.transform.CompareTag(target.tag));
-
-            return output;
+            return rayHit; //&& (info.transform.CompareTag(target.tag));
         }
 
         return false;

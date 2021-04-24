@@ -4,6 +4,7 @@ using UnityEngine;
 public class PickupDropGun : MonoBehaviour
 {
     public Transform pickupRayOrigin;
+    public FloaterPickup floatPick;
     
     private Transform _tr;
     
@@ -20,6 +21,7 @@ public class PickupDropGun : MonoBehaviour
             {
                 GameObject gun = transform.GetChild(0).gameObject;
                 gun.GetComponentInChildren<GunGroundCheck>().parentTransform = null;
+                floatPick.ammoManager = null;
             }
         }
         else if (Physics.Raycast(pickupRayOrigin.position, pickupRayOrigin.forward, out RaycastHit info,
@@ -31,6 +33,7 @@ public class PickupDropGun : MonoBehaviour
             {
                 GameObject gunBody = info.collider.gameObject;
                 gunBody.GetComponentInParent<GunGroundCheck>().parentTransform = _tr;
+                floatPick.ammoManager = gunBody.GetComponentInParent<AmmunitionManager>();
             }
         }
     }

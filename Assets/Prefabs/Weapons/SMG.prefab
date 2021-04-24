@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 118741093798820605}
   - component: {fileID: 3132063253182896291}
   - component: {fileID: 2155202573480181491}
+  - component: {fileID: 9104036527740607367}
   m_Layer: 0
   m_Name: SMG
   m_TagString: Weapon
@@ -196,9 +197,6 @@ MonoBehaviour:
     m_Bits: 192
   bullet: {fileID: 445800292162714385, guid: 216d91f8c6dec5de6ba7944007d00dd0, type: 3}
   shootPoint: {fileID: 5008439484379664970}
-  usesMags: 1
-  roundsPerMag: 25
-  magsCount: 6
 --- !u!114 &118741093798820605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyCollider: {fileID: 1700818097323315112}
+  startsDropped: 0
 --- !u!54 &2155202573480181491
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -241,6 +240,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9104036527740607367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414565077797839774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dcfda59cf1046fa9edf3b74b5f1d853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roundsPerMag: 25
+  magsCount: 5
+  magsLimit: 10
 --- !u!1 &5963671091641175404
 GameObject:
   m_ObjectHideFlags: 0

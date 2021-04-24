@@ -14,7 +14,7 @@ public class AmmoTextController : MonoBehaviour, AmmunitionStatusListener
 
     void Start()
     {
-        GetComponent<GunShooting>().AddAmmoListener(this);
+        GetComponent<AmmunitionManager>().AddAmmoListener(this);
     }
 
     public void OnNewStatus(int shots, int mags)

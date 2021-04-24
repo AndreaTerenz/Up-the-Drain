@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alwaysOn: 0
   gunBody: {fileID: 2684306369068885187}
-  muzzleFlash: {fileID: 6528548542193684136}
+  muzzleFlash: {fileID: 3674769395915824414}
 --- !u!136 &770792846712627254
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -171,6 +171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 10
   autoFire: 1
+  bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
   bullet: {fileID: 445800292162714385, guid: 3094d4c0f04f55833864433a94b4aade, type: 3}
   shootPoint: {fileID: 8312917724751569624}
   usesMags: 0
@@ -323,7 +326,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
